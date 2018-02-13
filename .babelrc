@@ -1,0 +1,26 @@
+{
+  "presets": [
+    "react",
+    ["env", {
+      "targets": {
+        "browsers" : "> 2%"
+      },
+      "loose": true
+    }]
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "transform-runtime",
+    "syntax-dynamic-import",
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ]
+      }
+    ]
+  ]
+}
