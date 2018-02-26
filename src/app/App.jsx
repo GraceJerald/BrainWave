@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import Drawer from 'material-ui/Drawer';
-import { withStyles } from 'material-ui/styles';
+import Divider from 'material-ui/Divider';
 import Snackbar from 'material-ui/Snackbar';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import PeopleIcon from 'material-ui-icons/People';
+import AccessManagementIcon from 'material-ui-icons/SupervisorAccount';
+import BlurOnIcon from 'material-ui-icons/BlurOn';
+import HelpIcon from 'material-ui-icons/Help';
+import { withStyles } from 'material-ui/styles';
+
 // import 'typeface-roboto';
 
 import firebase from 'utils/firebase';
@@ -26,6 +34,7 @@ import { storeNotificationToken } from './api';
 
 import './App.scss';
 import { OperationState } from '../shared/constants';
+import Routes from './routes';
 
 const mapStateToProps = (state) => ({
   userInfo : state.auth.userInfo,
@@ -153,7 +162,56 @@ class App extends Component {
             onKeyDown={this.toggleDrawer}
           >
             <div className={this.props.classes.drawerContent}>
-              Hi!
+              <List component="nav">
+                <ListItem button>
+                  <ListItemIcon>
+                    <PeopleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Patients" />
+                </ListItem>
+              </List>
+              <Divider />
+              <List component="nav">
+                <ListItem button>
+                  <ListItemIcon>
+                    <AccessManagementIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Access control" />
+                </ListItem>
+                <ListItem
+                  button
+                  component={
+                    props =>
+                      <NavLink
+                        to={Routes.SensorsSetUp.path}
+                        {...props}
+                      />
+                  }
+                >
+                  <ListItemIcon>
+                    <BlurOnIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={Routes.SensorsSetUp.text} />
+                </ListItem>
+              </List>
+              <Divider />
+              <List component="nav">
+                <ListItem
+                  button
+                  component={
+                    props =>
+                      <NavLink
+                        to={Routes.About.path}
+                        {...props}
+                      />
+                  }
+                >
+                  <ListItemIcon>
+                    <HelpIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="About" />
+                </ListItem>
+              </List>
             </div>
           </div>
         </Drawer>

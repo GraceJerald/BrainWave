@@ -71,7 +71,6 @@ const Header = ({ notifications, userInfo, classes, onLogOutClicked, notificatio
       >
         Wave
       </Typography>
-      <WrappedLink to={Routes.About} activeClassName={classes.active} />
       <WrappedLink to={Routes.Login} />
       <WrappedNotificationCenter notifications={notifications} />
       <UserInfo
