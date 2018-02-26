@@ -19,4 +19,6 @@ export const Messages = {
   LEFT_GAME: 'Ваша команда не в игре',
 
   TASK_LIST_UPDATED: 'Список заданий изменён',
+
+  SAVED: 'Saved',
 };

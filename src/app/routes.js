@@ -5,13 +5,14 @@ export default {
     path : '/',
   },
 
-  Game : {
-    path : '/game',
-  },
-
   Team : {
     text : 'Профиль',
     path : '/profile',
+  },
+
+  SensorsSetUp : {
+    text : 'Sensors definition',
+    path : '/sensors',
   },
 
   About : {
