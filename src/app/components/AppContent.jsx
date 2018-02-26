@@ -17,13 +17,14 @@ import About from '../../about/About';
 import Loading from 'shared/Loading';
 
 import {
+  userIsAuthenticatedRedirect,
   userIsNotAuthenticatedRedirect,
 } from '../../auth/authWrappers';
 
 const Login = userIsNotAuthenticatedRedirect(LoginContainer);
 const SignUp = userIsNotAuthenticatedRedirect(SignUpContainer);
 const ResetPassword = userIsNotAuthenticatedRedirect(ResetPasswordContainer);
-const SensorsSetUp = userIsNotAuthenticatedRedirect(SensorsSetUpContainer);
+const SensorsSetUp = userIsAuthenticatedRedirect(SensorsSetUpContainer);
 
 const LoadableProfile = Loadable({
   loader: () => import(/* webpackChunkName: "Profile" */ '../../profile/Profile'),

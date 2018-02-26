@@ -81,7 +81,7 @@ class UserInfo extends Component {
           <div className={this.props.classes.actions}>
             <NavLink to={Routes.Team.path}>
               <Button
-                dense
+                size="small"
                 disableRipple
                 onClick={this.handleClose}
               >
@@ -89,7 +89,7 @@ class UserInfo extends Component {
               </Button>
             </NavLink>
             <Button
-              dense
+              size="small"
               disableRipple
               onClick={this.props.onLogOutClicked}
             >
