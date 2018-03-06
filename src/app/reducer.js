@@ -18,6 +18,7 @@ import { loginReducer } from '../auth/login/reducer';
 import { resetPasswordReducer } from '../auth/resetPassword/reducer';
 import profileReducer from '../profile/reducer';
 import settingsReducer from '../settings/reducer';
+import patientsReducer from '../patients/reducer';
 import { OperationState } from '../shared/constants';
 
 const initialState = {
@@ -78,7 +79,8 @@ export const combinedReducer = combineReducers({
   resetPassword : resetPasswordReducer,
   profile : profileReducer,
   main: mainReducer,
-  settings: settingsReducer,
+  settings : settingsReducer,
+  patients : patientsReducer,
 });
 
 export default combinedReducer;

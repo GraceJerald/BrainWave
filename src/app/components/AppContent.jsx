@@ -9,6 +9,7 @@ import Routes from '../routes';
 import SignUpContainer from '../../auth/signUp/SignUpContainer';
 import LoginContainer from '../../auth/login/LoginContainer';
 import ResetPasswordContainer from '../../auth/resetPassword/ResetPasswordContainer';
+import PatientsContainer from '../../patients/PatientsContainer';
 import SensorsSetUpContainer from '../../settings/SensorsSetUpContainer';
 import ErrorDisplay from '../../shared/ErrorDisplay';
 import Home from '../../home/Home';
@@ -25,6 +26,7 @@ const Login = userIsNotAuthenticatedRedirect(LoginContainer);
 const SignUp = userIsNotAuthenticatedRedirect(SignUpContainer);
 const ResetPassword = userIsNotAuthenticatedRedirect(ResetPasswordContainer);
 const SensorsSetUp = userIsAuthenticatedRedirect(SensorsSetUpContainer);
+const Patients = userIsAuthenticatedRedirect(PatientsContainer);
 
 const LoadableProfile = Loadable({
   loader: () => import(/* webpackChunkName: "Profile" */ '../../profile/Profile'),
@@ -45,6 +47,7 @@ const AppContent = ({ className }) => (
   <div className={className}>
     <Switch>
       <Route exact path={Routes.Main.path} component={Home}/>
+      <Route path={Routes.Patients.path} component={Patients}/>
       <Route path={Routes.SensorsSetUp.path} component={SensorsSetUp}/>
       <Route path={Routes.Team.path} component={LoadableProfile}/>
       <Route path={Routes.About.path} component={About}/>

@@ -10,6 +10,11 @@ export default {
     path : '/profile',
   },
 
+  Patients : {
+    text : 'Patients',
+    path : '/patients',
+  },
+
   SensorsSetUp : {
     text : 'Sensors definition',
     path : '/sensors',

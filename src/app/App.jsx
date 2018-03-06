@@ -163,7 +163,16 @@ class App extends Component {
           >
             <div className={this.props.classes.drawerContent}>
               <List component="nav">
-                <ListItem button>
+                <ListItem
+                  button
+                  component={
+                    props =>
+                      <NavLink
+                        to={Routes.Patients.path}
+                        {...props}
+                      />
+                  }
+                >
                   <ListItemIcon>
                     <PeopleIcon />
                   </ListItemIcon>
