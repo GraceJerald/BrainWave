@@ -114,21 +114,22 @@ class SensorsSetUp extends Component {
   render () {
     return (
       <React.Fragment>
-        <div style={{margin: 'auto'}}>
+        <div className={this.props.classes.root}>
           <InputAcquisition
             disability={this.state.disability}
             stimuli={this.state.stimuli}
             comfort={this.state.comfort}
             disabled={this.props.operationState === OperationState.FETCHING || this.props.operationState === OperationState.SAVING }
             onSelectChanged={this.handleSelectChanged}
-            className={this.props.classes.row}
+            className={this.props.classes.inputsRow}
           />
           <SensorEEGScheme
             schema={this.state.sensors}
             disabled={!this.isValidSelection}
+            className={this.props.classes.sensorScheme}
             onSensorClicked={this.handleSensorClick}
           />
-          <div className={this.props.classes.row}>
+          <div className={this.props.classes.controlsRow}>
             <Button
               onClick={this.handleResetSchema}
               disabled={this.state.dry}
