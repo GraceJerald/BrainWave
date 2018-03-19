@@ -1,6 +1,6 @@
 export const Messages = {
-  LOGIN_SUCCESS: 'Вход выполнен',
-  LOGOUT_SUCCESS: 'Выход выполнен',
+  LOGIN_SUCCESS: 'Sign-in success',
+  LOGOUT_SUCCESS: 'Sign-out success',
   RESET_EMAIL_SENT: 'Данные для сброса пароля отправлены на почту',
   PHONE_DISCLAIMER: 'Номер телефона нужен для оперативной связи организаторов с участниками. Он не будет опубликован.',
   PHONE_VERIFICATION_SENT: 'Код подтверждения выслан на указанный номер',

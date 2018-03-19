@@ -85,7 +85,7 @@ class UserInfo extends Component {
                 disableRipple
                 onClick={this.handleClose}
               >
-                Профиль
+                Profile
               </Button>
             </NavLink>
             <Button
@@ -93,7 +93,7 @@ class UserInfo extends Component {
               disableRipple
               onClick={this.props.onLogOutClicked}
             >
-              Выход
+              Sign-out
             </Button>
           </div>
         </Popover>

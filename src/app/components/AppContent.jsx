@@ -9,8 +9,8 @@ import Routes from '../routes';
 import SignUpContainer from '../../auth/signUp/SignUpContainer';
 import LoginContainer from '../../auth/login/LoginContainer';
 import ResetPasswordContainer from '../../auth/resetPassword/ResetPasswordContainer';
-import PatientsContainer from '../../patients/PatientsContainer';
-import SensorsSetUpContainer from '../../settings/SensorsSetUpContainer';
+import PatientsPage from '../../patients/PatientsPage';
+import SensorsPage from '../../settings/SensorsPage';
 import ErrorDisplay from '../../shared/ErrorDisplay';
 import Home from '../../home/Home';
 import About from '../../about/About';
@@ -25,8 +25,8 @@ import {
 const Login = userIsNotAuthenticatedRedirect(LoginContainer);
 const SignUp = userIsNotAuthenticatedRedirect(SignUpContainer);
 const ResetPassword = userIsNotAuthenticatedRedirect(ResetPasswordContainer);
-const SensorsSetUp = userIsAuthenticatedRedirect(SensorsSetUpContainer);
-const Patients = userIsAuthenticatedRedirect(PatientsContainer);
+const SensorsSetUp = userIsAuthenticatedRedirect(SensorsPage);
+const Patients = userIsAuthenticatedRedirect(PatientsPage);
 
 const LoadableProfile = Loadable({
   loader: () => import(/* webpackChunkName: "Profile" */ '../../profile/Profile'),

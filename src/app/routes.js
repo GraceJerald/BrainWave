@@ -6,7 +6,7 @@ export default {
   },
 
   Team : {
-    text : 'Профиль',
+    text : 'Profile',
     path : '/profile',
   },
 

@@ -34,7 +34,7 @@ class BrowserNotificationWidget extends Component {
     return (
       <List>
         <ListItem dense>
-          <ListItemText primary="Включить уведомления" />
+          <ListItemText primary="Enable notifications" />
           <ListItemSecondaryAction>
             <Switch
               onClick={this.handleChangeNotificationPermission}
