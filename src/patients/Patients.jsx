@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Table, { TableBody, TableCell, TableHead, TableRow, TableFooter } from 'material-ui/Table';
 import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import EditIcon from 'material-ui-icons/Edit';
-import DeleteIcon from 'material-ui-icons/Delete';
+import Hidden from 'material-ui/Hidden';
 import { withStyles } from 'material-ui/styles';
 
 import { OperationState } from '../shared/constants';
 
 import PatientDataDialog from './components/PatientDataDialog';
 import styles from './patientsStyles';
+
+import PatientList from './components/PatientList';
+import PatientTable from './components/PatientTable';
+
+const PatientView = (props) => (
+  <React.Fragment>
+    <Hidden xsDown>
+      <PatientTable
+        {...props}
+      />
+    </Hidden>
+    <Hidden smUp>
+      <PatientList
+        {...props}
+      />
+    </Hidden>
+  </React.Fragment>
+);
 
 
 class Patients extends Component {
@@ -22,11 +37,13 @@ class Patients extends Component {
 
   static get propTypes() {
     return {
+      variant: PropTypes.string.isRequired,
       classes: PropTypes.object.isRequired,
       patients: PropTypes.array.isRequired,
       operationState: PropTypes.oneOf(Object.values(OperationState)).isRequired,
       savePatient: PropTypes.func.isRequired,
       deletePatient: PropTypes.func.isRequired,
+      selectPatient: PropTypes.func,
     };
   }
 
@@ -63,57 +80,29 @@ class Patients extends Component {
   render () {
     return (
       <React.Fragment>
-        <Table className={this.props.classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Nave</TableCell>
-              <TableCell numeric>Disability</TableCell>
-              <TableCell numeric>Stimuli</TableCell>
-              <TableCell numeric>Comfort</TableCell>
-              <TableCell>Controls</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.props.patients.map(patient => {
-              return (
-                <TableRow key={patient.id}>
-                  <TableCell>{patient.name}</TableCell>
-                  <TableCell numeric>{patient.disability}</TableCell>
-                  <TableCell numeric>{patient.stimuli}</TableCell>
-                  <TableCell numeric>{patient.comfort}</TableCell>
-                  <TableCell>
-                    <IconButton
-                      onClick={() => this.handleEditPatientClicked(patient.id)}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton
-                      onClick={() => this.props.deletePatient(patient.id)}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <Button
-                size="small"
-                onClick={this.handleAddPatientClick}
-              >
-                Add patient
-              </Button>
-            </TableRow>
-          </TableFooter>
-        </Table>
+        <PatientView
+          patients={this.props.patients}
+          variant={this.props.variant}
+          onEditClicked={this.handleEditPatientClicked}
+          onDeleteClicked={this.props.deletePatient}
+          onSelectClicked={this.props.selectPatient}
+        />
         <PatientDataDialog
           open={this.state.patientDialogOpened}
           onSave={this.handleSavePatient}
           onCancel={this.handleCloseDialog}
           initialData={this.state.patientDialogInitialData}
         />
+        {this.props.variant === 'editable' &&
+        <div className={this.props.classes.row}>
+          <Button
+            size="small"
+            onClick={this.handleAddPatientClick}
+          >
+            Add patient
+          </Button>
+        </div>
+        }
       </React.Fragment>
     );
   }

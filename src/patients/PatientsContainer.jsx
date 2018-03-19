@@ -30,10 +30,12 @@ export class PatientsContainer extends Component {
   render = () => {
     return (
       <Patients
+        variant={this.props.variant}
         patients={this.props.patients}
         operationState={this.props.operationState}
         savePatient={this.props.savePatient}
         deletePatient={this.props.deletePatient}
+        selectPatient={this.props.selectPatient}
       />
     );
   }
